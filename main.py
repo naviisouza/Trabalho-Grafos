@@ -21,7 +21,6 @@ elif definirGrafo == 2:
     # ./cem.gml
     # ./mil.gml
     # ./dez_mil.gml
-    # ./cem_mil.gml
     G = func.lerArquivo(caminho)
 
     m.menu(G, direcao)
