@@ -30,13 +30,14 @@
 
 \title{Trabalho Prático\\ Biblioteca para Manipulação de Grafos}
 
-\author{Stephanie M. Cardozo, Rafael Silva Oliveira}
+\author{Ana Vitória Araújo de Souza, Melissa Rebeca de Souza Araújo, Jorge Inácio de Oliveira}
 
 
 \address{Pontifícia Universidade Católica de Minas Gerais (PUC Minas)\\
-  Código Postal 32.010-025 -- Contagem -- MG -- Brasil
-  \email{scardozo@sga.pucminas.br}
-  \email{rafael.oliveira.1329416@sga.pucminas.br}
+  Código Postal 32.310-050 -- Contagem -- MG -- Brasil
+  \email{ana.souza.479774@sga.pucminas.br}
+  \email{}
+  \email{}
 }
 
 \begin{document} 
@@ -44,7 +45,7 @@
 \maketitle
 
 \begin{resumo} 
-  Este relatório descreve as funções e os métodos de uma biblioteca desenvolvida para manipular grafos e representá-los em listas de adjacência, arquivos GML e matrizes de adjacência. A biblioteca utiliza o algoritmo de Fleury para mostrar um caminho euleriano e usa os princípios de Naive/Tarjan para identificar pontes. Além de fornecer opções para criar grafos e realizar consultas, o código fonte também é capaz de ler arquivos GML.
+  Este relatório descreve as funções e os métodos de uma biblioteca desenvolvida para manipular grafos e representá-los em listas de adjacência, arquivos GML e matrizes de adjacência...
 \end{resumo}
 
 
@@ -53,8 +54,6 @@
 O objetivo do trabalho é realizar estudos sobre grafos, entender o funcionamento de determinados algoritmos e realizar a contrução e a alteração de estruturas. O trabalho está dividido em duas entregas.
 
 Na primeira entrega, o usuário cria um grafo e consegue realizar a inclusão de arestas, consultar o número de vértices, ponderar uma aresta, dentre outros tipos de manipulação. Em seguida, é possível gerar uma representação do grafo.
-
-Caso o usuário tenha optado por gerar um arquivo GML na parte 1, é possível usá-lo como entrada na parte 2 do trabalho e encontrar um caminho euleriano (caso o grafo seja, de fato, euleriano). Na segunda entrega, os métodos de Naive e Tarjan são usados para encontrar pontes.
 
 \section{Materiais e Métodos}
 
@@ -102,72 +101,7 @@ No menu principal, existem várias opções para manipular o grafo G. Cada opç�
 \end{enumerate}
 
 \subsection{Segunda Entrega}
-Na segunda parte do trabalho, o desafio era encontrar pontes no grafo, utilizando dois métodos diferentes. A sugestão indicada foi Naive e Tarjan, dois métodos distintos, porém, com o mesmo objetivo.
 
-Com o Naive, analisamos as arestas, uma por uma. Se, ao remover determinada aresta, a quantidade de componentes do grafo aumentar, ela é uma ponte. Para isso, foi feita uma busca em profundidade.
-
-Já a estratégia de Tarjan consiste em verificar, de forma recursiva, cada nó do grafo, em forma de corte de arestas. Para isso, são determinados atributos para cada vértice, como: se já foi visitado, o tempo de descoberta e o nível no vértice. A partir do momento em que o atributo visitado for igual a False, o código entra em recursividade, fazendo com que o vizinho do primeiro nó seja visitado, recebendo mais 1 em tempo e nível.
-
-Após percorrer todos os vértices, se o nó raiz possuir mais de um sucessor, o atributo corte recebe True. Se o nó não for raiz, mas o nó vizinho possuir o atributo low maior ou igual ao atributo "time" do nó raiz, o nó raiz também recebe True no atributo corte.
-
-Com esses dois métodos implementados, o próximo desafio foi encontrar um caminho euleriano com o algoritmo de Fleury. Fleury, a partir do vértice raiz, escolhe uma aresta qualquer e, inicialmente, verifica se aquela aresta é uma ponte, não sendo, aquela aresta é removida e verifica-se novamente a quantidade de graus do vértice seguinte, sendo acima de um, faz a verificação de existência de ponte, até percorrer todos os vertices. Para que a função funcionasse corretamente, utilizamos uma ferramenta da biblioteca chamada "is-eulerian", que verifica se a possibilidade de haver caminho eureliano é real, analisando se todos os vértices possuem grau par.
-
-Implementamos um contador de tempo para a execução de Fleury assim que o usuário escolhe qual dos dois métodos de verificação ele quer utilizar. No terminal, é indicado quanto tempo levou a operação.\vspace{1cm}
-
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=.5\textwidth]{Figure1.png}
-\caption{Exemplo de Tempo de execução utilizando Naive}
-\label{fig:exampleFig1}
-\end{figure}
-
-
-Com tudo implementado, o novo objetivo foi testar com diferentes números de vertices. As escolhas foram: 100 (cem), 1000 (mil), 10000 (dez mil) e 100000 (cem mil) vertices. Na tabela abaixo, encontram-se os valores de tempo para cada um dos métodos.
-
-Tabela 1. Resultados em um PC com 8GB de RAM
-
-\begin{tabularx}{0.8\textwidth} { 
-  | >{\raggedright\arraybackslash}X 
-  | >{\centering\arraybackslash}X 
-  | >{\raggedleft\arraybackslash}X | }
- \hline
-   & Naive & Tarjan \\
- \hline
- 100 vértices  & 0.6731 segundos  & 0.1706 segundos  \\
- \hline
- 1000 vértices  & 33.28 minutos  & 82.3 segundos  \\
- \hline
- 10000 vértices  & 2.27 segundos  & 2.29 segundos \\
- \hline
- 100000 vértices  & 21.72 segundos  & 21.73 segundos \\
-\hline
-\end{tabularx} 
-
-
-Tabela 2. Resultados em um PC com 16GB de RAM
-
-\begin{tabularx}{0.8\textwidth} { 
-  | >{\raggedright\arraybackslash}X 
-  | >{\centering\arraybackslash}X 
-  | >{\raggedleft\arraybackslash}X | }
- \hline
-   & Naive & Tarjan \\
- \hline
- 100 vértices  & 0.2893 segundos  & 0.0795 segundos  \\
- \hline
- 1000 vértices  & 14.42 minutos  & 42.6 segundos  \\
- \hline
- 10000 vértices  & 0.8966 segundos  & 0.9140 segundos \\
- \hline
- 100000 vértices  & 9.44 segundos  & 9.47 segundos  \\
-\hline
-\end{tabularx}
-
-
-Os grafos de 100 (cem) e 1000 (mil) vértices foram gerados aleatoriamente pelo software gephi, transformados em não-direcionados e eulerizados com o auxílio da biblioteca NetworkX. Já os de 10000 (dez mil) e 100000 (cem mil), são grafos cíclicos, que possuem a quantidade de arestas igual a quantidade de vértices. Optamos por gerar os grafos dessa forma por conta de erros de memória.
-
-Por essa razão, os valores possuem tanta discrepância com os valores de grafos menores, até mesmo entre os dois métodos, praticamente não existe diferença de tempo de execução.
 
 \section{Conclusão}
 
@@ -177,6 +111,6 @@ Em relação às descobertas, percebemos que a eficácia do algoritmo de Tarjan 
 
 \section{Referências}
 
-NETWORKX DEVELOPERS. NetworkX -- Network Analysis in Python. Versão 2.8.8. Novembro, 2022. Disponível em: https://networkx.org/
+NETWORKX DEVELOPERS. NetworkX -- Network Analysis in Python. Versão 2.8.8. Novembro, 2023. Disponível em: https://networkx.org/
 
 \end{document}
