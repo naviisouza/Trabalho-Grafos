@@ -14,10 +14,7 @@ def menu(G, direcao):
     print("(8). Checar se o grafo é vazio ou completo")
     print("(9). Imprimir matriz de adjacência")
     print("(10). Imprimir lista de adjacência")
-    print("(11). Naive")
-    print("(12). Tarjan")
-    print("(13). Fleury")
-    print("(14). Gerar arquivo")
+    print("(11). Gerar arquivo")
     print("Digite QUALQUER OUTRA OPÇÃO para encerrar o programa")
 
     num = int(input("\nDigite um número referente ao menu acima: "))
@@ -43,12 +40,6 @@ def menu(G, direcao):
     elif num == 10:
         func.listaAdjacencia(G, direcao)
     elif num == 11:
-        func.naive(G, direcao, False, "", "")
-    elif num == 12:
-        func.Tarjan(G, direcao, False, "")
-    elif num == 13:
-        func.fleury(G, direcao)
-    elif num == 14:
         func.gerarArquivo(G, direcao)
     else:
         exit()
