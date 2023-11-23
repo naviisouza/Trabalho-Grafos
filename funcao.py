@@ -172,3 +172,13 @@ def quantidades(G, direcao):
     print(G.number_of_nodes())
 
     voltar(G, direcao)
+
+def vizinhancaVertice(G, direcao):
+v = input("\nDigite o rótulo de um dos vértices existentes: ")
+
+vizinhos = list(G.neighbors(v))
+
+print("\nVizinhança do vértice " + v + ": ")
+print(vizinhos)
+
+voltar(G, direcao)
