@@ -1,0 +1,107 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% How to use writeLaTeX: 
+%
+% You edit the source code here on the left, and the preview on the
+% right shows you the result within a few seconds.
+%
+% Bookmark this page and share the URL with your co-authors. They can
+% edit at the same time!
+%
+% You can upload figures, bibliographies, custom classes and
+% styles using the files menu.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+
+\usepackage{enumitem}
+
+\usepackage{graphicx,url}
+
+%\usepackage[brazil]{babel}   
+\usepackage[utf8]{inputenc}  
+
+     
+\sloppy
+
+\title{Trabalho Prático\\ Biblioteca para Manipulação de Grafos}
+
+\author{Ana Vitória Araújo de Souza, Melissa Rebeca de Souza Araújo, Jorge Inácio de Oliveira}
+
+
+\address{Pontifícia Universidade Católica de Minas Gerais (PUC Minas)\\
+  Código Postal 31.980-110 -- São Gabriel -- MG -- Brasil
+  \email{479774@sga.pucminas.br, 1404396@sga.pucminas.br, 1402763@sga.pucminas.br}
+}
+
+\begin{document} 
+
+\maketitle
+
+\begin{resumo} 
+   Este relatório descreve as funções e os métodos de uma biblioteca desenvolvida para manipular grafos e representá-los em listas de adjacência, arquivos GML e matrizes de adjacência. Além de fornecer opções para criar grafos e realizar consultas, o código fonte também é capaz de ler arquivos GML.
+\end{resumo}
+
+
+\section{Introdução} \label{sec:firstpage}
+
+O objetivo do trabalho é realizar estudos sobre grafos, entender o funcionamento de determinados algoritmos e realizar a contrução e a alteração de estruturas.
+
+O usuário cria um grafo e consegue realizar a inclusão de arestas, consultar o número de vértices, ponderar uma aresta, dentre outros tipos de manipulação. Em seguida, é possível gerar uma representação do grafo.
+
+\section{Materiais e Métodos}
+
+Linguagem utilizada: Python 3.9.0;\\ 
+Biblioteca auxiliar: NetworkX 2.8.8;\\
+Software para visualização de grafos: Gephi.
+
+Primeiramente, é preciso realizar a instalação do Python no sistema operacional, em seguida, para instalar a biblioteca no computador, basta abrir o Prompt de Comando e digitar: "pip install networkx[default]".
+
+\section{Resultados e Discussões}
+
+Após compilar o código, o usuário tem a opção de criar um grafo ou de inserir o caminho de um arquivo GML existente.
+
+Caso ele escolha criar um grafo, uma mensagem solicita o número de vértices, em seguida, é perguntado se o grafo é direcionado ou não. Se for não-orientado, o usuário digita "1" e o método "nx.Graph" é chamado. Caso seja direcionado, ele deve digitar "2", assim, chamando "nx.DiGraph". Ambos os métodos fazem parte da biblioteca NetworkX e são usados para criar um grafo "G" (objeto que possui dicionários para armazenar vértices, arestas e atributos).
+
+Posteriormente, aparecerá no terminal uma mensagem perguntando o rótulo e o peso do primeiro vértice. A mensagem é repetida para cada um dos nós.
+
+Feito isso, um grafo vazio é criado e o método "menu" é chamado. Se o usuário escolheu inserir o caminho de um arquivo, o menu será chamado logo após.
+
+No menu principal, existem várias opções para manipular o grafo G. Cada opção será detalhada a seguir:
+
+\begin{enumerate}[itemsep=8pt,parsep=8pt]
+    \item Criar arestas:\\ Adiciona uma aresta ao grafo G;\\ Parâmetros: vértice de origem, vértice de destino e valor da aresta;\\ Caso o peso seja igual a 0, a aresta será desconsiderada pelo Gephi e pela matriz de adjacência.
+    
+    \item Remover arestas: Deleta a aresta inserida pelo usuário.
+    
+    \item Rotular arestas: Adiociona o atributo "rótulo" à uma aresta existente.
+    
+    \item Adjacência entre vértices: O usuário insere um vértice e a biblioteca retorna os vizinhos deste nó por meio de um iterador, percorrendo o dict de nós e verificando a existência de arestas entre o vértice escolhido e os demais vértices do grafo.
+    
+    \item Adjacencia entre arestas: O usuário escolhe uma aresta, em seguida, uma lista com todas as arestas do grafo é gerada. Posteriormente, o programa checa se o primeiro vértice da aresta escolhida existe nas demais arestas do grafo, se for verdade, há adjacencia. Esse mesmo procedimento é repetido para o segundo vértice. Se os dois nós existem ao mesmo tempo, trata-se da mesma aresta inserida pelo usuário, logo, não é adjacente.
+    
+    \item Existência de arestas: A biblioteca verifica se determinada aresta existe no grafo "G" usando o operador "in". Caso exista, a função retorna True, se não existe, retorna False.
+    
+    \item Quantidade de vértices e de arestas: A biblioteca retorna um número inteiro que representa o tamanho do dicionário em que os vértices estão armazenados. Esse mesmo princípio é utilizado para retornar a quantidade de arestas.
+    
+    \item Verificar se o grafo é vazio ou completo: Confere o número de arestas e, se for igual a zero, o grafo é vazio. Para checar se é completo, o programa utiliza a seguinte fórmula: "(V * (V - 1))/2". Em um grafo completo, o total de vértices é igual a V; nesse grafo, um vértice se conecta com todos os outros vértices, menos com ele mesmo (V - 1). Isso será repetido para todos os outros vértices (V * V - 1); dividimos por 2 para não contar o mesmo vértice duas vezes após a multiplicação.
+    
+    \item Imprimir matriz de adjacência: As linhas e colunas são ordenadas de acordo com os nós que estão armazenados na lista de vértices. O atributo da aresta que contém o valor do "peso" é usado para preencher a matriz.
+    
+    \item Imprimir lista de adjacência: Ao criar um vértice, a biblioteca, automaticamente, armazena-o em uma lista de adjacência (dict). Esta função imprime a lista no terminal.
+    
+    \item Gerar arquivo: Gera um arquivo com extenção GEXF, o qual é salvo na mesma pasta onde está localizado o código fonte.
+    
+\end{enumerate}
+
+\section{Conclusão}
+
+Após a finalização do trabalho, é notável que o conhecimento da equipe em relação à teoria de grafos foi aumentado. Ademais, foi possível compreender o funcionamento do código fonte de uma biblioteca pronta, a qual foi de grande utilidade e simplificou a manipulação. Foi extremamente necessário possuir tal biblioteca, pois ter a possibilidade de verificar funções básicas, mas essenciais para funções mais complexas foi o diferencial para conseguir realizar essa atividade.
+
+\section{Referências}
+
+NETWORKX DEVELOPERS. NetworkX -- Network Analysis in Python. Versão 2.8.8. Novembro, 2023. Disponível em: https://networkx.org/
+
+\end{document}
