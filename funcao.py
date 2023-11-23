@@ -174,11 +174,11 @@ def quantidades(G, direcao):
     voltar(G, direcao)
 
 def vizinhancaVertice(G, direcao):
-v = input("\nDigite o rótulo de um dos vértices existentes: ")
+    v = input("\nDigite o rótulo de um dos vértices existentes: ")
 
-vizinhos = list(G.neighbors(v))
+    vizinhos = list(G.neighbors(v))
 
-print("\nVizinhança do vértice " + v + ": ")
-print(vizinhos)
+    print("\nVizinhança do vértice " + v + ": ")
+    print(vizinhos)
 
-voltar(G, direcao)
+    voltar(G, direcao)
