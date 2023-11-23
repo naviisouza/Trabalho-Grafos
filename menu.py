@@ -12,9 +12,10 @@ def menu(G, direcao):
     print("(6). Checar existência de arestas")
     print("(7). Checar quantidade de vértices e arestas")
     print("(8). Checar se o grafo é vazio ou completo")
-    print("(9). Imprimir matriz de adjacência")
-    print("(10). Imprimir lista de adjacência")
-    print("(11). Gerar arquivo")
+    print("(9). Checar vizinhça de um vértice")
+    print("(10). Imprimir matriz de adjacência")
+    print("(11). Imprimir lista de adjacência")
+    print("(12). Gerar arquivo")
     print("Digite QUALQUER OUTRA OPÇÃO para encerrar o programa")
 
     num = int(input("\nDigite um número referente ao menu acima: "))
@@ -36,10 +37,12 @@ def menu(G, direcao):
     elif num == 8:
         func.vazioOuCompleto(G, direcao)
     elif num == 9:
-        func.matrizAdjacencia(G, direcao)
+        func.vizinhancaVertice(G, direcao)
     elif num == 10:
-        func.listaAdjacencia(G, direcao)
+        func.matrizAdjacencia(G, direcao)
     elif num == 11:
+        func.listaAdjacencia(G, direcao)
+    elif num == 12:
         func.gerarArquivo(G, direcao)
     else:
         exit()
