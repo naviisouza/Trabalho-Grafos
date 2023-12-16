@@ -14,7 +14,7 @@ class Graph:
                 print(dist[i][j], end="\t")
             print()
 
-    def bellmanFordAdaptado(self):
+    def bellmanFord2(self):
         # Inicializa a matriz de distâncias com infinito
         dist = [[float('inf') for _ in range(self.V)] for _ in range(self.V)]
 
