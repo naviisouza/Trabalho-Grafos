@@ -15,7 +15,7 @@ class Graph:
         for i in range(self.V):
             print("{0}\t\t{1}".format(i, dist[i]))
 
-    def BellmanFord(self, src):
+    def BellmanFord1(self, src):
         # Implementação do algoritmo de Bellman-Ford para encontrar o caminho mais curto
 
         # Inicialização das distâncias com infinito, exceto a fonte com distância 0
@@ -38,4 +38,4 @@ class Graph:
         self.printArr(dist)
 
     # Executar o algoritmo de Bellman-Ford com a fonte no vértice 0
-    g.BellmanFord(0)
+    g.BellmanFord1(0)
